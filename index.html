@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+		<!-- Styles -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+		<link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" href="js/datatables/media/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="js/datatables/dataTables-responsive/css/dataTables.responsive.css">
+
+		<link rel="stylesheet" href="js/angular-datatables/dist/css/angular-datatables.min.css">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/business.css">
+    <link rel="stylesheet" href="css/default.css" >
+
+
+		<title>Coin Market Info</title>
+
+	</head>
+	<body ng-app="myApp">
+		<!-- Navigation -->
+		<div class="container-fluid header">
+			<div class="row">
+
+				<div class="col-md-12">
+
+						<div class="container">
+
+							<div class="row row-eq-height" ng-controller="coinTickerController">
+								<div class="col-xs-12 col-sm-12 col-md-4">
+									<img src="static/img/logos/navbar-logo-bco-x2.png" alt="" class="img-responsive">
+								</div>
+								<div class="col-xs-12 col-sm-8 col-md-4">
+
+									<div id="container" style="width:100%; height:100px;"></div>
+
+								</div>
+								<div class="col-xs-6 col-sm-2 col-md-2 coin-ticker" ng-class="data.price.usd > 0?'fade in': 'fade'">
+									<p class="ct-title">USD
+										<span class="no-wrap" ng-class="btc.percent_change_24h > 0 ? 'pct-positive' : 'pct-negative'">{{btc.percent_change_24h}} %</span>
+									</p>
+									<span class="ct-price no-wrap">$ {{data.price.usd | number:2 }}</span>
+									<p class="ct-title2">EUR <span>€ {{data.price.eur | number:2 }}</span></p>
+								</div>
+								<div class="col-xs-6 col-sm-2 col-md-2 coin-ticker" ng-class="data.price.jpy > 0?'fade in': 'fade'">
+									<p class="ct-title">BITCNY
+										<span class="no-wrap" ng-class="cny.percent_change_24h > 0 ? 'pct-positive' : 'pct-negative'">{{cny.percent_change_24h}} %</span>
+									</p>
+									<span class="ct-price no-wrap">¥ {{data.price.jpy | number:2 }}</span>
+									<p class="ct-title2">GBP <span>£ {{data.price.gbp | number:2 }}</span></p>
+								</div>
+							</div>
+
+						</div>
+				</div>
+
+			</div>
+		</div>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+			<div class="row top30">
+
+				<div class="col-lg-12">
+					<!-- TradingView Widget BEGIN -->
+					<div id="tv-miniwidget-f1f96"></div>
+					<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+					<script type="text/javascript">
+					new TradingView.MiniWidget({
+					  "container_id": "tv-miniwidget-f1f96",
+					  "tabs": [
+					    "Equities"
+					  ],
+					  "symbols": {
+					    "Equities": [
+					      [
+					        "BTCUSD",
+					        "BITSTAMP:BTCUSD|1y"
+					      ]
+					    ]
+					  },
+					  "gridLineColor": "#e9e9ea",
+					  "fontColor": "#83888d",
+					  "underLineColor": "#dbeffb",
+					  "trendLineColor": "#4bafe9",
+					  "activeTickerBackgroundColor": "#edf0f3",
+					  "large_chart_url": "https://www.tradingview.com/chart/",
+					  "noGraph": false,
+					  "width": "100%",
+					  "height": "200px",
+					  "locale": "en"
+					});
+					</script>
+					<!-- TradingView Widget END -->
+
+
+				</div>
+
+
+
+			</div>
+
+			<div class="row top15" ng-controller="rssTickerController">
+				<div class="col-lg-6 top15" ng-repeat="newsItem in loadFeed.news">
+
+					<!--  start carousel -->
+					<div class="media" >
+						<div class="media-left">
+							<a ng-href="{{newsItem.link}}" target="_blank">
+								<img class="media-object" ng-src="{{newsItem.image}}" alt="..." ng-if="newsItem.image.length > 0">
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">{{newsItem.title}}</h4>
+							<span class="font-small" ng-bind-html="newsItem.short_story"></span>
+						</div>
+					</div>
+					<!--  end carousel -->
+
+				</div>
+			</div>
+
+			<div class="row top30" >
+
+				<div class="col-lg-12">
+					<div ng-controller="coinMarketTable as vm">
+
+						<div class="curry-1" ng-hide="true"></div>
+
+						<div class="btn-group pull-right" role="group" aria-label="...">
+							<div class="btn-group" role="group">
+
+								<ul class="dropdown-menu">
+									<li ng-repeat="(key, value) in apiData.currencyExchangeRates"><a ng-href="#{{key}}">{{key}}</a></li>
+								</ul>
+
+							</div>
+
+							<button type="button" class="btn btn-default" ng-click="vm.allData()">All</button>
+							<button type="button" class="btn btn-default" ng-click="vm.previousPage()" ng-hide="pageNumber == 1"><span aria-hidden="true">&larr;</span> Previous 100</button>
+							<button type="button" class="btn btn-default" ng-click="vm.nextPage()" ng-hide="pageNumber == globalData.tPages">Next 100 <span aria-hidden="true">&rarr;</span></button>
+						</div>
+
+						<table datatable=""
+							dt-options="vm.dtOptions"
+							dt-columns="vm.dtColumns"
+							dt-column-defs="vm.dtColumnDefs"
+							dt-instance="vm.dtInstance"
+							class="row-border hover order-column stripe" width="100%"></table>
+					</div>
+
+				</div>
+			</div>
+
+
+		<!-- Footer -->
+		<footer>
+				<div class="row">
+						<div class="col-lg-12">
+								<p>Copyright &copy; Coin Market Info </p>
+						</div>
+				</div>
+		</footer>
+
+
+    </div>
+    <!-- /.container -->
+
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+		<script data-require="bootstrap@3.3.5" data-semver="3.3.5" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		<script src="js/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script src="js/datatables/dataTables-responsive/js/dataTables.responsive.js"></script>
+
+		<script src="js/numeral.js"></script>
+		<script src="js/curry.js"></script>
+
+		<script src="http://momentjs.com/downloads/moment.min.js"></script>
+		<script src="js/highcharts/highcharts.js"></script>
+		<script src="js/highcharts/dark-theme.js"></script>
+
+
+		<script src="https://code.angularjs.org/1.5.6/angular.js"></script>
+		<script src="https://code.angularjs.org/1.5.6/angular-resource.min.js"></script>
+		<script src="https://code.angularjs.org/1.5.6/angular-animate.min.js"></script>
+		<script src="https://code.angularjs.org/1.5.6/angular-sanitize.min.js"></script>
+
+		<script src="js/angular-datatables/dist/angular-datatables.js"></script>
+
+		<script src="scripts/app.js" ></script>
+		<script src="scripts/controllers/main.js" ></script>
+		<script src="scripts/controllers/globalVarController.js" ></script>
+		<script src="scripts/controllers/coinMarketTable.js" ></script>
+		<script src="scripts/controllers/rssTickerController.js"></script>
+		<script src="scripts/controllers/coinTickerController.js"></script>
+
+		<script src="scripts/services/main.js" ></script>
+		<script src="scripts/services/coinMarketFactory.js" ></script>
+
+		<script type="text/javascript">
+
+		$(function () {
+
+			var jsonUrl = 'https://blockchain.info/charts/market-price?format=json';
+			//'https://blockchain.info/charts/market-price?format=json'
+			// $('#container').highcharts(json);
+				$.getJSON(jsonUrl, function (data) {
+
+						var title = {
+							 text: 'BTCUSD Price (24h)',
+							 align: 'left',
+							 style: {
+								 "fontSize": "1em",
+						     "font-weight": "bold",
+								 "color": "#63c7f7"
+							 }
+						};
+						var subtitle = {
+							 text: null
+						};
+						var xAxis = {
+							 categories: [],
+							 visible : false
+						};
+
+						var subdata = [];
+						var subserie = [];
+						for (var i = data.values.length - 10; i < data.values.length; i++) {
+							subdata.push(data.values[i]);
+						};
+						for(var item in subdata) {
+
+							xAxis.categories.push(moment.unix(subdata[item].x).format("D/M HH:mm"));
+							var v2 = subdata[item].y;
+							//var v2 = moment.unix(subdata[item].x).format("HH:mm:ss").toString();
+							// subserie.push(moment.unix(v2).format("HH:mm:ss"));
+							subserie.push(v2);
+						}
+
+						var yAxis = {
+							 title: {
+									text: null
+							 },
+							 plotLines: [{
+									value: 0,
+									width: 1,
+									color: '#d10079'
+							 }]
+						};
+
+						var tooltip = {
+							 valueSuffix: ''
+						}
+
+						var legend = {
+							 layout: 'vertical',
+							 align: 'right',
+							 verticalAlign: 'middle',
+							 borderWidth: 0,
+							 enabled: false
+						};
+
+						var series =  [
+							 {
+									name: 'BTC-USD',
+									data: subserie
+							 },
+						];
+
+						var chart = {
+							type: 'areaspline'
+						};
+
+						var plotOptions = {
+							areaspline: {
+								fillColor: 'rgba(99,199,247,.25)'
+							}
+						};
+
+						var credits = {
+							enabled: 0
+						};
+
+						var json = {};
+
+						json.title = title;
+						json.subtitle = subtitle;
+						json.xAxis = xAxis;
+						json.yAxis = yAxis;
+						json.tooltip = tooltip;
+						json.legend = legend;
+						json.series = series;
+						json.chart = chart;
+						json.plotOptions = plotOptions;
+						json.credits = credits;
+
+						$('#container').highcharts(json);
+				});
+		});
+
+		</script>
+
+	</body>
+</html>

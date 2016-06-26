@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+table {
+  font-family: 'Roboto', sans-serif;
+}
+
+.currency-logo {
+    margin-right: 5px;
+    margin-top: -4px;
+    width: 16px;
+    height: 16px;
+    display: inline;
+}
+/*.dollar:before {
+    content: '$ ';
+    font-size: 1em;
+    color: #c0c0c0;
+}*/
+
+tr > td > span.pct-positive { color: green;}
+
+tr > td > span.pct-negative{ color: red; }
+
+tr > td > span.pct-negative::after {
+position: relative;
+  top: 0;
+  margin-left: 3px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-size: .7em;
+  font-weight: normal;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content:"\e114";
+
+}
+
+tr > td > span.pct-positive::after {
+position: relative;
+  top: 0;
+  margin-left: 3px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-size: .7em;
+  font-weight: normal;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content:"\e113";
+
+}
+
+table.dataTable thead td, table.dataTable thead th {
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #ffcb7f;
+}
+
+table.dataTable {
+    border: solid thin #dddddd;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+table.dataTable.stripe tbody tr.odd,
+table.dataTable.display tbody tr.odd {
+    background-color: #fbfbfb;
+}
+
+img.sparkline {
+  border: 1px dotted #ffd8ae;
+  border-top: 0;
+  width: 90%;
+  height: 40px;
+  -webkit-filter: hue-rotate(190deg);
+  filter: hue-rotate(190deg);
+  border-right: 0;
+  mix-blend-mode: multiply;
+}
+
+.no-wrap{white-space:nowrap}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+.fade-ng-cloak {
+  opacity: 1;
+  -ms-filter: none;
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.fade-ng-cloak[ng-cloak] {
+  display: block !important;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.fade-ng-cloak.ng-cloak,
+.fade-ng-cloak.ng-binding {
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+.fade-ng-cloak.ng-binding {
+    opacity: 1;
+}
+
+#embed-footer { display:none!important; }

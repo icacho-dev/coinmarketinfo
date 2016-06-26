@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+		<!-- Styles -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+		<link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" />
+
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" href="js/datatables/media/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="js/datatables/dataTables-responsive/css/dataTables.responsive.css">
+
+		<link rel="stylesheet" href="js/angular-datatables/dist/css/angular-datatables.min.css">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/business.css">
+    <link rel="stylesheet" href="css/default.css" >
+
+		<title>Coin Market Info</title>
+
+	</head>
+	<body ng-app="myApp">
+		<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">a</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="static/img/logos/logo150x50.png" alt="">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+									<li>
+											<a href="#">Home</a>
+									</li>
+                    <!-- <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- { "id": "dash", "name": "Dash", "symbol": "DASH", "rank": 6, "price_usd": 7.7184, "24h_volume_usd": 744727, "market_cap_usd": 50320197, "available_supply": 6519511, "total_supply": 6519511, "percent_change_1h": 1.24, "percent_change_24h": -1.25, "percent_change_7d": 0.32 } -->
+
+				<div class="row" >
+					<div class="col-lg-12">
+						<div ng-controller="coinMarketTable as vm">
+
+							<code>apiData</code><br>
+							<pre>{{apiData.currencyExchangeRates | json}}</pre>
+							<code>globalData</code><br>
+							<pre>{{globalData | json}}</pre>
+							<code>pageNumber</code><br>
+							<pre>{{pageNumber | json}}</pre>
+
+
+							<div class="curry-1"></div>
+
+							<div class="btn-group pull-right" role="group" aria-label="...">
+								<div class="btn-group" role="group">
+							    <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							      USD
+							      <span class="caret"></span>
+							    </button> -->
+							    <ul class="dropdown-menu">
+							      <li ng-repeat="(key, value) in apiData.currencyExchangeRates"><a ng-href="#{{key}}">{{key}}</a></li>
+							    </ul>
+							  </div>
+								<!-- <button type="button" class="btn btn-default" ng-click="dtInstance.changeData(backPagePath)">reloadData</button>
+								<button type="button" class="btn btn-default" ng-click="dtInstance.changeData(nextPagePath)">Next 100</button> -->
+								<button type="button" class="btn btn-default" ng-click="vm.allData()">All</button>
+								<button type="button" class="btn btn-default" ng-click="vm.previousPage()" ng-hide="pageNumber == 1"><span aria-hidden="true">&larr;</span> Previous 100</button>
+								<button type="button" class="btn btn-default" ng-click="vm.nextPage()" ng-hide="pageNumber == globalData.tPages">Next 100 <span aria-hidden="true">&rarr;</span></button>
+							</div>
+
+							<table datatable=""
+								dt-options="vm.dtOptions"
+								dt-columns="vm.dtColumns"
+								dt-column-defs="vm.dtColumnDefs"
+								dt-instance="vm.dtInstance"
+								class="row-border hover order-column stripe" width="100%"></table>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- <div class="row">
+					<div class="col-lg-12">
+						<code>data.length</code><br />
+						<pre>
+							{{data.length | json}}
+						</pre>
+					</div>
+				</div> -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Coin Market Info </p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+		<script data-require="bootstrap@3.3.5" data-semver="3.3.5" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		<script src="js/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script src="js/datatables/dataTables-responsive/js/dataTables.responsive.js"></script>
+
+		<script src="js/numeral.js"></script>
+		<script src="js/curry.js"></script>
+		
+		<script src="https://code.angularjs.org/1.5.6/angular.js"></script>
+		<script src="https://code.angularjs.org/1.5.6/angular-resource.min.js"></script>
+
+		<script src="js/angular-datatables/dist/angular-datatables.js"></script>
+		<script src="js/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+
+		<script src="scripts/app.js" ></script>
+		<script src="scripts/controllers/main.js" ></script>
+		<script src="scripts/controllers/globalVarController.js" ></script>
+		<!-- <script src="scripts/controllers/coinMarketController.js" ></script> -->
+		<script src="scripts/controllers/coinMarketTable.js" ></script>
+		<script src="scripts/services/main.js" ></script>
+		<script src="scripts/services/coinMarketFactory.js" ></script>
+
+
+	</body>
+</html>
