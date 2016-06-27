@@ -5,6 +5,7 @@
  * csvToArray function I think I found on php.net
  */
 header('Content-type: application/json');
+header('Access-Control-Allow-Origin: http://coinmarketinfo.com');
 // Set your CSV feed
 $feed = 'https://api.bitcoinaverage.com/history/USD/per_minute_24h_sliding_window.csv';
 // Arrays we'll use later
