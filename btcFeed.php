@@ -1,6 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: http://coinmarketinfo.com');
-header('Access-Control-Allow-Origin: http://www.coinmarketinfo.com');
+header('Access-Control-Allow-Origin: *');
 include('GoogleNews.php');
 $news = new GoogleNews();
 $news->setSearchQuery('Bitcoin');

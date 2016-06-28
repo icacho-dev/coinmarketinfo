@@ -1,0 +1,4 @@
+<IfModule mod_headers.c>
+   SetEnvIfNoCase Origin "https?://(www\.)?(coinmarketinfo\.com|coinmarketinfo\.com)(:\d+)?$" AccessControlAllowOrigin=$0
+   Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+</IfModule>

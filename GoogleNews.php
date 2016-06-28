@@ -5,9 +5,6 @@
  * @package None
  * @author Nuhil Mehdy <nuhil@nuhil.net>
  */
- header('Access-Control-Allow-Origin: http://coinmarketinfo.com');
- header('Access-Control-Allow-Origin: http://www.coinmarketinfo.com');
-
 class GoogleNews {
 
     public $searchQuery = 'Bitcoin';
