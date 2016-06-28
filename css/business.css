@@ -137,6 +137,9 @@ position: relative;
 .newsItemContainer a.newsItemLink span {
   color: #333333;
 }
+.newsItemContainer a.newsItemLink:hover span {
+  color: green;
+}
 .newsItemContainer a.newsItemLink:hover {
   color: #63c7f7;
 }
