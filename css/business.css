@@ -134,8 +134,11 @@ position: relative;
     height: 120px;
 }
 
+.newsItemContainer a.newsItemLink span {
+  color: #333333;
+}
 .newsItemContainer a.newsItemLink:hover {
-  color: green;
+  color: #63c7f7;
 }
 .newsItemContainer a.newsItemLink:link,
 .newsItemContainer a.newsItemLink:visited
