@@ -140,9 +140,13 @@
 								<img class="media-object" ng-src="{{newsItem.image}}" alt="..." ng-if="newsItem.image.length > 0">
 							</a>
 						</div>
-						<div class="media-body">
-							<h4 class="media-heading">{{newsItem.title}}</h4>
-							<span class="font-small" ng-bind-html="newsItem.short_story"></span>
+						<div class="media-body newsItemContainer">
+							<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
+								<h4 class="media-heading">{{newsItem.title}}</h4>
+							</a>
+							<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
+								<span class="font-small" ng-bind-html="newsItem.short_story"></span>
+							</a>
 						</div>
 					</div>
 					<!--  end carousel -->

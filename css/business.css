@@ -134,3 +134,12 @@ position: relative;
     height: 120px;
 }
 
+.newsItemContainer a.newsItemLink:hover {
+  color: green;
+}
+.newsItemContainer a.newsItemLink:link,
+.newsItemContainer a.newsItemLink:visited
+.newsItemContainer a.newsItemLink:hover
+.newsItemContainer a.newsItemLink:active {
+    text-decoration: none;
+}
