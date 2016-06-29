@@ -155,7 +155,7 @@
 
 		<div ng-controller="rssTickerController" class="rss-ticker-container">
 			<div ng-repeat="newsItem in loadFeed.news" ng-if="$index % 3 == 0" class="row top30">
-				<div class="col-xs-4" ng-repeat="newsItem in loadFeed.news.slice($index, ($index+3 > loadFeed.news ? loadFeed.news : $index+3))">
+				<div class="col-sm-4" ng-repeat="newsItem in loadFeed.news.slice($index, ($index+3 > loadFeed.news ? loadFeed.news : $index+3))">
 					<!--  start mediaFeedItems -->
 					<div class="media" >
 						<div class="media-left">
