@@ -7,7 +7,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 body {
-    padding-top: 0px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    padding-top: 0; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
 }
 
 .navbar-fixed-top .nav {
@@ -24,7 +24,7 @@ footer {
 
 @media(min-width:768px) {
     body {
-        padding-top: 0px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+        padding-top: 0; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
     }
 
     .navbar-fixed-top .navbar-brand {
@@ -46,12 +46,6 @@ footer {
 .top17 { margin-top:17px; }
 .top30 { margin-top:30px; }
 
-.media:first-child {
-    /*margin-top: 1em;
-    border: thin solid #dde1e6;
-    padding: 1em;
-    border-collapse: collapse;*/
-}
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'Unica One', cursive;
 }
@@ -147,4 +141,15 @@ position: relative;
 .newsItemContainer a.newsItemLink:hover
 .newsItemContainer a.newsItemLink:active {
     text-decoration: none;
+}
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }
