@@ -150,16 +150,13 @@ position: relative;
   display:         flex;
 }
 
-.newsItemSource {
-  font-family: 'Open Sans Condensed','Helvetica';
-  font-weight: 600;
-  color: #777a7e;
-  font-size: 1em;
+.newsItemMetaContainer {
+  background-color: #f7f7f7;
 }
 
-.newsItemAgo {
-  font-family: 'Open Sans Condensed','Helvetica';
-  font-weight: 600;
-  color: red;
-  font-size: 1em;
+.newsItemMeta {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 300;
+  color: #41809f;
+  font-size: .9em;
 }
