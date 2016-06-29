@@ -1,6 +1,4 @@
-(function(angular) {
-  'use strict';
-  angular.module('myApp.services')
+  angular.module('app.services')
   .factory('coinMarketFactory', ['$http', '$q', function($http, $q) {
     var path = ''
     var params = [];
@@ -67,7 +65,7 @@
       });
     };
 
-		dataFactory.getApiData = function (url) {
+    dataFactory.getApiData = function (url) {
       // console.log('[00.2] dataFactory.getApiData');
       return $http.get(url)
       .then(function(response)
@@ -128,12 +126,12 @@
           return dataFactory.getGlobalData('https://api.coinmarketcap.com/v1/global/');
         }
 
-				this.apiData = function () {
-					var url = "http://cors.io/?u=http://coinmarketcap.northpole.ro/api/v5/all.json";
-					// console.log('[00.0] dataService.getCurrencyExchangeRates');
+        this.apiData = function () {
+          var url = "http://cors.io/?u=http://coinmarketcap.northpole.ro/api/v5/all.json";
+          // console.log('[00.0] dataService.getCurrencyExchangeRates');
           // return dataFactory.getCurrencyExchangeRates('http://blockchain.info/ticker?cors=true');
           return dataFactory.getApiData(url);
-				}
+        }
 
         this.firstDataSet = function(gulr) {
                return dataFactory.getFirstDataSet(gulr);
@@ -170,4 +168,3 @@
         }
 
     });
-})(window.angular);

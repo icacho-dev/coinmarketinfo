@@ -1,11 +1,10 @@
-(function(angular) {
-  'use strict';
-  angular.module('myApp.controllers')
-  .controller('coinMarketController', [
-    '$scope','$resource', '$filter', '$timeout', '$q' ,
-    'DTOptionsBuilder', 'DTColumnBuilder', 'coinMarketFactory','dataService',
-    function($scope, $resource, $filter, $timeout, $q ,
-      DTOptionsBuilder, DTColumnBuilder, coinMarketFactory, dataService) {
+angular
+.module('app.controllers')
+.controller('coinMarketController', [
+  '$scope','$resource', '$filter', '$timeout', '$q' ,
+  'DTOptionsBuilder', 'DTColumnBuilder', 'coinMarketFactory','dataService',
+  function($scope, $resource, $filter, $timeout, $q ,
+    DTOptionsBuilder, DTColumnBuilder, coinMarketFactory, dataService) {
 
       $scope.status;
       $scope.ilcoinTmp;
@@ -14,7 +13,6 @@
       $scope.pageLength = 100;
       $scope.totalEl = 100;
 
-      //$scope.globalData = setGlobalData();
       dataService.setGlobalData().then(function(result){
 
         $scope.globalData = result;
@@ -33,9 +31,9 @@
         vm.authorized = false;
         vm.dtInstance = {};
         vm.dtOptions = DTOptionsBuilder.fromFnPromise(
-  				coinMarketFactory.getPage(1)
+          coinMarketFactory.getPage(1)
         )
-  			.withOption('responsive', true)
+        .withOption('responsive', true)
         .withOption('sDom', '<"toolbar">rt<"bottom"i><"clear">')
         .withOption('pageLength', $scope.pageLength)
         .withOption('authorized', true)
@@ -81,9 +79,9 @@
 
         function previousPage () {
           if($scope.pageNumber == 2)
-            vm.dtInstance.changeData(coinMarketFactory.getPage(--$scope.pageNumber));
+          vm.dtInstance.changeData(coinMarketFactory.getPage(--$scope.pageNumber));
           else
-            vm.dtInstance.changeData(dataService.pageDataSet(--$scope.pageNumber));
+          vm.dtInstance.changeData(dataService.pageDataSet(--$scope.pageNumber));
 
           vm.dtInstance.rerender();
         };
@@ -158,4 +156,3 @@
       function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; };
 
     }]);
-  })(window.angular);

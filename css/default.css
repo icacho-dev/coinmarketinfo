@@ -9,11 +9,6 @@ table {
     height: 16px;
     display: inline;
 }
-/*.dollar:before {
-    content: '$ ';
-    font-size: 1em;
-    color: #c0c0c0;
-}*/
 
 tr > td > span.pct-positive { color: green;}
 

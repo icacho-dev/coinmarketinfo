@@ -1,13 +1,9 @@
-(function(angular) {
-  'use strict';
-  angular.module('myApp.filters')
-  .filter('moment', [
-    function () {
+angular
+  .module('app.filters')
+  .filter('moment', [ function () {
       return function (date, method) {
         var momented = moment(date);
         return momented[method].apply(momented, Array.prototype.slice.call(arguments, 2));
       };
     }
-  ])
-  ;
-})(window.angular);
+  ]);

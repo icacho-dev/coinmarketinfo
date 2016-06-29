@@ -1,6 +1,5 @@
-(function(angular) {
-  'use strict';
-  angular.module('myApp.controllers')
+angular
+.module('app.controllers')
   .controller('rssTickerController', [ '$scope', '$timeout', '$q', '$log', 'FeedService' ,
 	function($scope, $timeout, $q, $log, FeedService ) {
 
@@ -32,7 +31,5 @@
           return $http.get(url);
 
         }
-		  }
-		}])    
-		;
-  })(window.angular);
+		  };
+		}]);
