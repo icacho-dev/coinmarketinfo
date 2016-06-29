@@ -6,8 +6,9 @@
 
 		$scope.$log = $log;
 		$scope.feedSrc = '/btcFeed.php';
+    $scope.loadFeed;
 
-		$scope.loadFeed;
+    $log.info('rssTickerController -> loaded');
 
 		callFeed();
 
@@ -16,22 +17,21 @@
 
 			FeedService.parseFeed($scope.feedSrc).then( function(res) {
 
-				$log.info('res', res);
+				$log.info('rssTickerController.FeedService.parseFeed ->', res);
 				$scope.loadFeed = res.data;
 
       });
 
 		}
 
-		$log.info('rssTickerController -> loaded');
-
 		}])
 		.factory('FeedService', ['$http', function($http) {
 		  return {
 		    parseFeed: function(url) {
 
-		      return $http.get(url);
-		    }
+          return $http.get(url);
+
+        }
 		  }
 		}])
 		;
