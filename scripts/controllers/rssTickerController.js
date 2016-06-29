@@ -13,7 +13,7 @@
 		callFeed();
 
 		function callFeed() {
-			console.log('ini ---- ');
+
 
 			FeedService.parseFeed($scope.feedSrc).then( function(res) {
 
@@ -33,11 +33,6 @@
 
         }
 		  }
-		}])
-    .filter('fromNow', function() {
-      return function(date) {
-        return moment(date).fromNow();
-      }
-    })
+		}])    
 		;
   })(window.angular);

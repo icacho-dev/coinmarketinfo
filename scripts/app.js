@@ -8,7 +8,8 @@
     'ngResource',
 		'ngSanitize',
     'myApp.controllers',
-    'myApp.services'
+    'myApp.services',
+    'myApp.filters',
   ])
   .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.debugInfoEnabled(true);

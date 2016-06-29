@@ -5,7 +5,7 @@
 	function($scope, $interval, $q, $log, CoinDataService ) {
 
 		$scope.$log = $log;
-		$scope.feedSrc = 'http://coinmarketinfo.tk/btcFeed.php';
+		$scope.feedSrc = '/btcFeed.php';
 
 		$scope.data = null;
 		$scope.btc = null;
