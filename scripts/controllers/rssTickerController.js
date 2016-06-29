@@ -5,7 +5,7 @@
 	function($scope, $timeout, $q, $log, FeedService ) {
 
 		$scope.$log = $log;
-		$scope.feedSrc = 'http://coinmarketinfo.tk/btcFeed.php';
+		$scope.feedSrc = '/btcFeed.php';
 
 		$scope.loadFeed;
 
@@ -24,7 +24,7 @@
 		}
 
 		$log.info('rssTickerController -> loaded');
-		
+
 		}])
 		.factory('FeedService', ['$http', function($http) {
 		  return {
