@@ -148,30 +148,29 @@
 			</div>
 
 			<div class="row row-eq-height" ng-controller="rssTickerController">
-			    <div ng-repeat="newsItem in loadFeed.news">
-			        <div class="clearfix" ng-if="$index % 3 == 0"></div>
-			        <div class="col-sm-4">
-								<!--  start mediaFeedItems -->
-								<div class="media" >
-									<div class="media-left">
-										<a ng-href="{{newsItem.link}}" target="_blank">
-											<img class="media-object" ng-src="{{newsItem.image}}" alt="..." ng-if="newsItem.image.length > 0">
-										</a>
-									</div>
-									<div class="media-body newsItemContainer">
-										<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
-											<h4 class="media-heading">{{newsItem.title}}</h4>
-										</a>
-										<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
-											<span class="font-small" ng-bind-html="newsItem.short_story"></span>
-										</a>
-									</div>
-								</div>
-								<!--  end mediaFeedItems -->
-			        </div>
-			    </div>
+    		<div ng-repeat-start="newsItem in loadFeed.news" class="clearfix" ng-if="$index % 3 == 0"></div>
+    		<div ng-repeat-end class="col-sm-4" style="cursor: pointer, z-index: 1">
+					<!--  start mediaFeedItems -->
+					<div class="media" >
+						<div class="media-left">
+							<a ng-href="{{newsItem.link}}" target="_blank">
+								<img class="media-object" ng-src="{{newsItem.image}}" alt="..." ng-if="newsItem.image.length > 0">
+							</a>
+						</div>
+						<div class="media-body newsItemContainer">
+							<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
+								<h4 class="media-heading">{{newsItem.title}}</h4>
+							</a>
+							<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
+								<span class="font-small" ng-bind-html="newsItem.short_story"></span>
+							</a>
+						</div>
+					</div>
+					<!--  end mediaFeedItems -->
+		    </div>
 			</div>
 
+			
 			<div class="row top30" >
 
 				<div class="col-lg-12">
