@@ -50,7 +50,7 @@ class GoogleNews {
 
 								$news[$i]['title'] = (string) $item->title;
                 $news[$i]['link'] = (string) $item->link;
-                $news[$i]['pubdate'] = (strtotime) $item->pubDate;
+                $news[$i]['pubdate'] = (string) $item->pubDate;
                 $news[$i]['image'] = $match[1];
                 $news[$i]['news_source'] = strip_tags($newsSections[1]);
                 $news[$i]['short_story'] = strip_tags($newsSections[2]);
