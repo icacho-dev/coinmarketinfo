@@ -164,7 +164,7 @@
 							<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
 								<span class="font-small" ng-bind-html="newsItem.short_story"></span>
 							</a>
-							<span class="newsItemAgo">{{ newsItem.pubDate | moment:'fromNow':true }}</span>&nbps;
+							<span class="newsItemAgo">{{ newsItem.pubdate | moment:'fromNow':true }}</span>&nbsp;
 							<span class="newsItemSource">{{ newsItem.news_source }}</span>
 						</div>
 					</div>

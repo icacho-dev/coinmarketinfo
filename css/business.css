@@ -151,9 +151,15 @@ position: relative;
 }
 
 .newsItemSource {
-  color: green;
+  font-family: 'Open Sans Condensed','Helvetica';
+  font-weight: 600;
+  color: #777a7e;
+  font-size: 1em;
 }
 
 .newsItemAgo {
-  color: blue;
+  font-family: 'Open Sans Condensed','Helvetica';
+  font-weight: 600;
+  color: red;
+  font-size: 1em;
 }
