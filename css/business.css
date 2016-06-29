@@ -64,7 +64,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .coin-ticker .ct-price {
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 	color: #efefef;
   font-size: 2em;
 }
@@ -152,9 +152,7 @@ position: relative;
   display:         flex;
 }
 
-.newsItemMetaContainer {
-  /*background-color: #f7f7f7;*/
-}
+/*.newsItemMetaContainer {}*/
 
 .newsItemMeta {
   font-family: 'Rajdhani', sans-serif;
