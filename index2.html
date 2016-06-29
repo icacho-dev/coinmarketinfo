@@ -147,33 +147,30 @@
 
 			</div>
 
-			<div class="row row row-eq-height"  ng-controller="rssTickerController">
-			    <div class="col-md-4" ng-repeat-start="item in loadFeed.news">
-
-						<!--  start mediaFeedItems -->
-						<div class="media" >
-							<div class="media-left">
-								<a ng-href="{{newsItem.link}}" target="_blank">
-									<img class="media-object" ng-src="{{newsItem.image}}" alt="..." ng-if="newsItem.image.length > 0">
-								</a>
-							</div>
-							<div class="media-body newsItemContainer">
-								<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
-									<h4 class="media-heading">{{newsItem.title}}</h4>
-								</a>
-								<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
-									<span class="font-small" ng-bind-html="newsItem.short_story"></span>
-								</a>
-							</div>
-						</div>
-						<!--  end mediaFeedItems -->
-
+			<div class="row row-eq-height">
+			    <div ng-repeat="newsItem in loadFeed.news">
+			        <div class="clearfix" ng-if="$index % 3 == 0"></div>
+			        <div class="col-sm-4">
+								<!--  start mediaFeedItems -->
+								<div class="media" >
+									<div class="media-left">
+										<a ng-href="{{newsItem.link}}" target="_blank">
+											<img class="media-object" ng-src="{{newsItem.image}}" alt="..." ng-if="newsItem.image.length > 0">
+										</a>
+									</div>
+									<div class="media-body newsItemContainer">
+										<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
+											<h4 class="media-heading">{{newsItem.title}}</h4>
+										</a>
+										<a ng-href="{{newsItem.link}}" target="_blank" class="newsItemLink">
+											<span class="font-small" ng-bind-html="newsItem.short_story"></span>
+										</a>
+									</div>
+								</div>
+								<!--  end mediaFeedItems -->
+			        </div>
 			    </div>
-			    <div class="clearfix" ng-if="$index%3==2"></div>
-			    <div ng-repeat-end=""></div>
 			</div>
-
-
 
 			<div class="row top30" >
 
