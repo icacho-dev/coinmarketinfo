@@ -50,15 +50,15 @@
 	<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
 	<div ng-view></div>
 
-	<div class="col-xs-12">
+	<div class="col-md-3 col-md-offset-2">
 
 		<code>root.globals</code>
 		<pre>{{$root.globals | json}}</pre>
-		<br>
 		<code>root.meta</code>
 		<pre>{{$root.meta | json}}</pre>
 
 	</div>
+
 
 	<!-- [1] -->
 	<!-- <script src="js/jquery-1.11.1.min.js"></script> -->
