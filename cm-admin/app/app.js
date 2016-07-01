@@ -3,6 +3,11 @@
 
     angular
         .module('app', ['ngRoute', 'ngCookies'])
+        .constant("myConfig", {
+        "url": "http://coinmarketinfo.com/",
+        "api": "http://coinmarketinfo.com/cm-admin/services/",
+        "port": "80"
+        })
         .config(config)
         .run(run);
 
