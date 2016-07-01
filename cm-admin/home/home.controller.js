@@ -49,7 +49,7 @@
                               return { classes: 'none' };
                           },
                           cache: false,
-                          height: 400,
+                          // height: 400,
                           striped: true,
                           pagination: true,
                           pageSize: 10,
@@ -62,17 +62,17 @@
                           showToggle: true,
                           maintainSelected: true,
                           columns: [
-                            // {
-                            //   field: 'state',
-                            //   checkbox: true
-                            // },
-                          {
-                              field: 'pk',
-                              title: '#',
-                              align: 'right',
-                              valign: 'bottom',
-                              sortable: true
-                          }
+                            {
+                              field: 'state',
+                              checkbox: true
+                            },
+                            {
+                                field: 'pk',
+                                title: '#',
+                                align: 'right',
+                                valign: 'bottom',
+                                sortable: true
+                            }
                           // ,
                           // {
                           //     field: 'id',
