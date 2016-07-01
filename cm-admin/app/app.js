@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies'])
+        .module('app', ['ngRoute', 'ngCookies','bsTable'])
         .constant("myConfig", {
         "url": "http://coinmarketinfo.com/",
         "api": "http://coinmarketinfo.com/cm-admin/services/",
