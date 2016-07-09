@@ -118,7 +118,7 @@ angular.module('app.controllers')
         DTColumnBuilder.newColumn('number/_source').withTitle('#'),
         DTColumnBuilder.newColumn('name_link/_text').withTitle('Name').renderWith(imgCellLabel).withClass('font-bold'),
         DTColumnBuilder.newColumn('marketcap_price').withTitle('Market Cap').withClass('no-wrap text-right price').renderWith(valCol).withOption('defaultContent', defaultValue()),
-        DTColumnBuilder.newColumn('price_link/_text').withTitle('Price').withClass('no-wrap text-right text-bold price').renderWith(valCol).withOption('defaultContent', defaultValue()),
+        DTColumnBuilder.newColumn('price_link/_text').withTitle('Price (USD)').withClass('no-wrap text-right text-bold price').renderWith(valCol).withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('available_link/_text').withTitle('Avaiable Supply').withClass('no-wrap text-right').withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('volume24h_link/_text').withTitle('Volume (24h)').withClass('no-wrap text-right price').renderWith(valCol).withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('change24h_value').withTitle('% Change (24h)').renderWith(percentLabel).withClass('no-wrap text-right').withOption('defaultContent', defaultValue()),
