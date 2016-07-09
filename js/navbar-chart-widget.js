@@ -80,6 +80,7 @@ $(function () {
     var credits = {
       enabled: 1,
       text: 'BlockChain',
+      href: 'https://blockchain.info/',
       style: {
         'color': '#c3c3c3'
       }
