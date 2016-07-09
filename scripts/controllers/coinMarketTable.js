@@ -234,7 +234,7 @@ angular.module('app.controllers')
         "volume24h_link/_text": "$ 1,592,390",
         "pricegraph7d_link": "http://coinmarketcap.com/currencies/ilcoin/#charts",
         "price_link": "http://coinmarketcap.com/currencies/ilcoin/#markets",
-        "pricegraph7d_image": "https://files.coinmarketcap.com/generated/sparklines/74.png",
+        "pricegraph7d_image": "https://files.coinmarketcap.com/generated/sparklines/833.png",
         "volume24h_link/_source": "/currencies/ilcoin/#markets",
         "change24h_value": $scope.calculated.change24h_value + " %"
       };
