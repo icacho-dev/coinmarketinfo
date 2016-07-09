@@ -250,6 +250,8 @@
 
 	<script src="js/angular-datatables/dist/angular-datatables.js"></script>
 
+	<script src="js/navbar-chart-widget.js" ></script>
+
 	<script src="scripts/app.js" ></script>
 
 	<script src="scripts/controllers/main.js" ></script>
@@ -264,108 +266,7 @@
 	<script src="scripts/filters/main.js" ></script>
 	<script src="scripts/filters/momentFilters.js" ></script>
 
-	<script type="text/javascript">
 
-	$(function () {
-
-		var jsonUrl = 'https://blockchain.info/charts/market-price?format=json';
-		//'https://blockchain.info/charts/market-price?format=json'
-		// $('#container').highcharts(json);
-		$.getJSON(jsonUrl, function (data) {
-
-			var title = {
-				text: 'BTCUSD Price (24h)',
-				align: 'left',
-				style: {
-					'fontSize': '1em',
-					'font-weight': 'bold',
-					'color': 'rgba(100, 200, 247, 0.95);'
-				}
-			};
-			var subtitle = {
-				text: null
-			};
-			var xAxis = {
-				categories: [],
-				visible : false
-			};
-
-			var subdata = [];
-			var subserie = [];
-			for (var i = data.values.length - 10; i < data.values.length; i++) {
-				subdata.push(data.values[i]);
-			};
-			for(var item in subdata) {
-
-				xAxis.categories.push(moment.unix(subdata[item].x).format("D/M HH:mm"));
-				var v2 = subdata[item].y;
-				//var v2 = moment.unix(subdata[item].x).format("HH:mm:ss").toString();
-				// subserie.push(moment.unix(v2).format("HH:mm:ss"));
-				subserie.push(v2);
-			}
-
-			var yAxis = {
-				title: {
-					text: null
-				},
-				plotLines: [{
-					value: 0,
-					width: 1,
-					color: '#d10079'
-				}]
-			};
-
-			var tooltip = {
-				valueSuffix: ''
-			}
-
-			var legend = {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0,
-				enabled: false
-			};
-
-			var series =  [
-				{
-					name: 'BTC-USD',
-					data: subserie
-				},
-			];
-
-			var chart = {
-				type: 'areaspline'
-			};
-
-			var plotOptions = {
-				areaspline: {
-					fillColor: 'rgba(99,199,247,.25)'
-				}
-			};
-
-			var credits = {
-				enabled: 0
-			};
-
-			var json = {};
-
-			json.title = title;
-			json.subtitle = subtitle;
-			json.xAxis = xAxis;
-			json.yAxis = yAxis;
-			json.tooltip = tooltip;
-			json.legend = legend;
-			json.series = series;
-			json.chart = chart;
-			json.plotOptions = plotOptions;
-			json.credits = credits;
-
-			$('#container').highcharts(json);
-		});
-	});
-
-	</script>
 	<!-- google-analytics -->
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
