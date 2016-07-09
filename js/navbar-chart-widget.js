@@ -27,7 +27,7 @@ $(function () {
     var subserie = [];
     for (var i = data.values.length - 10; i < data.values.length; i++) {
       subdata.push(data.values[i]);
-    };
+    }
     for(var item in subdata) {
 
       xAxis.categories.push(moment.unix(subdata[item].x).format("D/M HH:mm"));
@@ -50,7 +50,7 @@ $(function () {
 
     var tooltip = {
       valueSuffix: ''
-    }
+    };
 
     var legend = {
       layout: 'vertical',
@@ -78,7 +78,11 @@ $(function () {
     };
 
     var credits = {
-      enabled: 0
+      enabled: 1,
+      text: 'BlockChain',
+      style: {
+        'color': '#c3c3c3'
+      }
     };
 
     var json = {};
