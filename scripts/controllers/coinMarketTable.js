@@ -119,7 +119,7 @@ angular.module('app.controllers')
         DTColumnBuilder.newColumn('name_link/_text').withTitle('Name').renderWith(imgCellLabel).withClass('font-bold'),
         DTColumnBuilder.newColumn('marketcap_price').withTitle('Market Cap').withClass('no-wrap text-right price').renderWith(valCol).withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('price_link/_text').withTitle('Price (USD)').withClass('no-wrap text-right text-bold price').renderWith(valCol).withOption('defaultContent', defaultValue()),
-        DTColumnBuilder.newColumn('available_link/_text').withTitle('Avaiable Supply').withClass('no-wrap text-right').withOption('defaultContent', defaultValue()),
+        DTColumnBuilder.newColumn('available_link/_text').withTitle('Avaliable Supply').withClass('no-wrap text-right').withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('volume24h_link/_text').withTitle('Volume (24h)').withClass('no-wrap text-right price').renderWith(valCol).withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('change24h_value').withTitle('% Change (24h)').renderWith(percentLabel).withClass('no-wrap text-right').withOption('defaultContent', defaultValue()),
         DTColumnBuilder.newColumn('pricegraph7d_image').withTitle('Price Graph (7d)').renderWith(imgCellGraph).withClass('no-wrap all').notSortable(),
@@ -127,31 +127,37 @@ angular.module('app.controllers')
 
       vm.newPromise = newPromise;
       vm.reloadData = reloadData;
+      vm.firstPage = firstPage;
       vm.nextPage = nextPage;
       vm.previousPage = previousPage;
+
       vm.dtInstance = {};
 
       function reloadData() {
         // console.info('vm -> reloadData');
         var resetPaging = true;
         vm.dtInstance.reloadData(callback, resetPaging);
-      };
-
+      }
       function callback(json) {
         // console.info('vm -> callback');
         console.log(json);
-      };
-
+      }
       function newPromise() {
         // console.info('vm -> newPromise');
         return coinMarketFactory.getPage($scope.pageNumber+1);//$resource(coinMarketFactory.getPage($scope.pageNumber+1)).query().$promise;
-      };
+      }
 
-      function nextPage () {
+      function firstPage() {
+        console.info('$scope.pageNumber', $scope.pageNumber);
+        $scope.pageNumber = 1;
+        vm.dtInstance.changeData(coinMarketFactory.getPage($scope.pageNumber));
+        vm.dtInstance.rerender();
+      }
+
+      function nextPage() {
         vm.dtInstance.changeData(dataService.pageDataSet(++$scope.pageNumber));
         vm.dtInstance.rerender();
-      };
-
+      }
       function previousPage () {
         if($scope.pageNumber == 2)
           vm.dtInstance.changeData(coinMarketFactory.getPage(--$scope.pageNumber));
@@ -159,8 +165,7 @@ angular.module('app.controllers')
           vm.dtInstance.changeData(dataService.pageDataSet(--$scope.pageNumber));
 
         vm.dtInstance.rerender();
-      };
-
+      }
     }
 
     function setTempNode() {
@@ -240,40 +245,36 @@ angular.module('app.controllers')
       };
       coinMarketFactory.setTmpNode([$scope.ilcoinTmpIndex,$scope.ilcoinTmp]);
       return coinMarketFactory.getTmpNode;
-    };
-
+    }
     function imgCellGraph(data, type, full, meta) {
       // console.info('full',full);
       var path = full['pricegraph7d_image'];
       return '<img class="sparkline" alt="sparkline" src="'+path+'">';
-    };
-
+    }
     function percentLabel(data, type, full, meta) {
       var result = ( parseFloat(data) > 0 )? "pct-positive" : "pct-negative";
       var htmlStr = "<span class='"+result+"'>"+data+"</span>";
       return htmlStr ;
-    };
-
+    }
     function valCol(data, type, full, meta) {
       // console.info('full',full);
       var unf = numeral().unformat(data);//Number(data.replace(/[^0-9\.]+/g,""));
-      var result = numeral(unf).format('$ 0,0[.][0000000]')
+      var result = numeral(unf).format('$ 0,0[.][0000000]');
       // var htmlStr = "<span my-col-val data-cp="+full.marketcap_price+" data-av='"+full.available_link_numbers+"'>"+data+"</span>";
       return result ;
-    };
-
+    }
     function defaultValue() {
       var htmlStr = "<p class='text-center text-muted'> ? </p>";
       return htmlStr ;
-    };
-
+    }
     function imgCellLabel(data, type, full, meta) {
       var path = full['name_image/_source'];
       return '<img src=".'+ path +'" alt="' + full['name_image/_alt'] + '-logo" class="currency-logo"/>' + ' ' + data;
-    };
+    }
 
-    function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; };
-
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
   }])
   .directive('myColVal', function() {
     return {

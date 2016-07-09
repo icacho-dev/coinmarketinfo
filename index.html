@@ -198,7 +198,9 @@
 
 						</div>
 
-						<button type="button" class="btn btn-default" ng-click="vm.allData()">All</button>
+						<button type="button" class="btn btn-default" ng-click="vm.firstPage()"
+								ng-hide="pageNumber == 1">First
+						</button>
 						<button type="button" class="btn btn-default" ng-click="vm.previousPage()" ng-hide="pageNumber == 1"><span aria-hidden="true">&larr;</span> Previous 100</button>
 						<button type="button" class="btn btn-default" ng-click="vm.nextPage()" ng-hide="pageNumber == globalData.tPages">Next 100 <span aria-hidden="true">&rarr;</span></button>
 					</div>

@@ -1,6 +1,6 @@
   angular.module('app.services')
   .factory('coinMarketFactory', ['$http', '$q', function($http, $q) {
-    var path = ''
+      var path = '';
     var params = [];
     return {
       getTmpNode : function () {
@@ -104,7 +104,7 @@
 
     dataFactory.getPageDataSet = function (page) {
       // console.log('fac:getPageDataSet ->',page);
-      return $http.get('https://api.import.io/store/connector/6cc86d93-9a64-4068-b9e2-8dc6c3239bfe/_query?input=webpage/url:http%3A%2F%2Fcoinmarketcap.com%2Fall%2F'+page+      '&&_apikey=1ecdbfaa5b6a4e99b4ac28e155faad363521bf2ee092218e5230734bd9af72c0a58ff2dcaeeefaf76b86d608e507439d2c4a387961de01947a6c9592f4d19bb23b47c25d666d1541bd6e7f892d7ac2c1').then(function(response) {
+        return $http.get('https://api.import.io/store/connector/6cc86d93-9a64-4068-b9e2-8dc6c3239bfe/_query?input=webpage/url:http%3A%2F%2Fcoinmarketcap.com%2Fall%2F' + page + '&&_apikey=1ecdbfaa5b6a4e99b4ac28e155faad363521bf2ee092218e5230734bd9af72c0a58ff2dcaeeefaf76b86d608e507439d2c4a387961de01947a6c9592f4d19bb23b47c25d666d1541bd6e7f892d7ac2c1').then(function (response) {
         if (typeof response.data === 'object') {
           if(page == 1)
             response.data.results.splice(params[0][0],1,params[0][1]);
@@ -124,23 +124,21 @@
         this.setGlobalData = function() {
           // console.log('[00.0] dataService.setGlobalData');
           return dataFactory.getGlobalData('https://api.coinmarketcap.com/v1/global/');
-        }
+        };
 
         this.apiData = function () {
           var url = "http://cors.io/?u=http://coinmarketcap.northpole.ro/api/v5/all.json";
-          // console.log('[00.0] dataService.getCurrencyExchangeRates');
-          // return dataFactory.getCurrencyExchangeRates('http://blockchain.info/ticker?cors=true');
           return dataFactory.getApiData(url);
-        }
+        };
 
         this.firstDataSet = function(gulr) {
-               return dataFactory.getFirstDataSet(gulr);
-        }
+            return dataFactory.getFirstDataSet(gulr);
+        };
 
         this.pageDataSet = function(page) {
           // console.log('ser:getPageDataSet ->',page);
           return dataFactory.getPageDataSet(page);
-        }
+        };
 
         this.allData = function(data) {
 
