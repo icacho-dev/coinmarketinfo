@@ -21,6 +21,10 @@
         function GetAll() {
             return $http.get(myConfig.api + 'currencies').then(handleSuccess, handleError('Error getting all currencies'));
         }
+
+        function Create(currency) {
+            return $http.post(myConfig.api + 'currencies', currency).then(handleSuccess, handleError('Error creating currency'));
+        }
         // function GetAll() {
         //     return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
         // }
