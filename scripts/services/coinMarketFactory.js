@@ -141,27 +141,6 @@
         };
 
         this.allData = function(data) {
-
-            // var active_assets = data.active_assets;
-            // var active_currencies = data.active_currencies;
-            // var length = active_assets + active_currencies;
-            // var lPage = Math.ceil(length/100);
-            //
-            // var defer = $q.defer();
-            // var promises = [];
-            //
-            // angular.forEach(resources, function(value) {
-            //     promises.push(MyApi.details(resources[i].key));
-            // });
-            // for (var i=1; i<lPage; i++) {
-            //   promises.push(i);
-            // }
-            //
-            // $q.all(promises).then(function() {
-            //     $scope.total = $scope.results.reduce(function(a, b) { return a + b; }, 0);
-            // })
-            //
-            // // console.log('allData');
             return dataFactory.getPageDataSet(data);
         }
 
