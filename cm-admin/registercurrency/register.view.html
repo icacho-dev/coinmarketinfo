@@ -58,31 +58,38 @@
                 <div class="panel-body">
                     <form name="form" ng-submit="vm.register()" role="form">
                         <div class="form-group"
+                             ng-class="{ 'has-error': form.date.$dirty && form.date.$error.date }">
+                            <label for="date">Date</label>
+                            <div class='input-group' id='datetimepicker1'>
+                                <input type="text" class="form-control"
+                                       name="date" id="date"
+                                       datetimepicker
+                                       datetimepicker-options="{{ vm.scoped }}"
+                                       placeholder="..."
+                                       ng-model="vm.currency.date">
+                            </div>
+
+
+                            <span ng-show="form.date.$dirty && form.date.$error.required" class="help-block">Date is required</span>
+                        </div>
+                        <div class="form-group"
                              ng-class="{ 'has-error': form.price.$dirty && form.price.$error.required }">
                             <label for="price">Price</label>
                             <input type="text" name="price" id="price" class="form-control" ng-model="vm.currency.price"
                                    required/>
                             <span ng-show="form.price.$dirty && form.price.$error.required" class="help-block">Price is required</span>
                         </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.date.$dirty && form.date.$error.date }">
-                            <label for="date">Date</label>
-                            <input type="text" class="form-control input-sm"
-                                   name="date" id="date"
-                                   datetimepicker
-                                   datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}"
-                                   placeholder="..."
-                                   ng-model="vm.currency.date">
-                            <span ng-show="form.date.$dirty && form.date.$error.required" class="help-block">Date is required</span>
-                        </div>
-
                         <div class="form-actions">
-                            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
+                            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Add</button>
                             <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                             <a href="#/" class="btn btn-link">Cancel</a>
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-12">
+
         </div>
     </div><!--/.row-->
 

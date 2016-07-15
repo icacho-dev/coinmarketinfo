@@ -9,6 +9,16 @@
     function RegisterCurrencyController(CurrencyService, $location, $rootScope, FlashService) {
         var vm = this;
 
+        vm.scoped = {
+            format: 'L hh:mm',
+            icons: {
+                next: 'glyphicon glyphicon-arrow-right',
+                previous:'glyphicon glyphicon-arrow-left',
+                up:'glyphicon glyphicon-arrow-up',
+                down:'glyphicon glyphicon-arrow-down'
+            }
+        };
+
         vm.register = register;
 
         function register() {
