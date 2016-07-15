@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies','bsTable'])
+        .module('app', ['ngRoute', 'ngCookies', 'bsTable', 'datetimepicker'])
         .constant("myConfig", {
         "url": "http://coinmarketinfo.com/",
         "api": "http://coinmarketinfo.com/api/v1/",
