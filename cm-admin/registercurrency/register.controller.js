@@ -13,7 +13,7 @@
 
         function register() {
             vm.dataLoading = true;
-            CurrencyService.Create(vm.user)
+            CurrencyService.Create(vm.currency)
                 .then(function (response) {
                     if (response.success) {
                         FlashService.Success('Registration successful', true);

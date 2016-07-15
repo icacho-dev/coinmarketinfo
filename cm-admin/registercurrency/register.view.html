@@ -56,7 +56,7 @@
 
     <div class="row" ng-hide="true">
         <div class="col-lg-6">
-            <h1>Hi {{vm.user.firstName}}!</h1>
+            <h1>Hi {{vm.currencyfirstName}}!</h1>
             <p>You're logged in!!</p>
             <h3>All registered users:</h3>
             <ul>
@@ -80,30 +80,24 @@
                 <div class="panel-heading">Add Currency value</div>
                 <div class="panel-body">
                     <form name="form" ng-submit="vm.register()" role="form">
-                        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+                        <div class="form-group"
+                             ng-class="{ 'has-error': form.price.$dirty && form.price.$error.required }">
                             <label for="username">First name</label>
-                            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
-                            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+                            <input type="text" name="price" id="price" class="form-control" ng-model="vm.currency.price"
+                                   required/>
+                            <span ng-show="form.price.$dirty && form.price.$error.required" class="help-block">Price is required</span>
                         </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+                        <div class="form-group" ng-class="{ 'has-error': form.date.$dirty && form.date.$error.date }">
                             <label for="username">Last name</label>
-                            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
-                            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+                            <input type="text" name="date" id="Text1" class="form-control" ng-model="vm.currency.date"
+                                   required/>
+                            <span ng-show="form.date.$dirty && form.date.$error.required" class="help-block">Date is required</span>
                         </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-                            <label for="username">Username</label>
-                            <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
-                            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
-                            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
-                        </div>
+
                         <div class="form-actions">
                             <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
                             <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                            <a href="#/login" class="btn btn-link">Cancel</a>
+                            <a href="#/" class="btn btn-link">Cancel</a>
                         </div>
                     </form>
                 </div>
