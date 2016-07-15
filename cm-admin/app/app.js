@@ -51,6 +51,18 @@
                 }
             })
 
+            .when('/registercurrency', {
+                controller: 'RegisterCurrencyController',
+                templateUrl: 'registercurrency/register.view.html',
+                controllerAs: 'vm',
+                resolve: {
+                    meta: ['$rootScope', function ($rootScope) {
+                        var title = "Register Currency";
+                        $rootScope.meta = {title: title};
+                    }]
+                }
+            })
+
             .otherwise({ redirectTo: '/login' });
     }
 
