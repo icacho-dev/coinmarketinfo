@@ -10,7 +10,11 @@
         var vm = this;
 
         vm.scoped = {
-            format: 'L hh:mm',
+            format: 'YYYY-MM-DD HH:mm',
+            useCurrent: true,
+            toolbarPlacement: 'top',
+            showTodayButton: true,
+            showClose: true,
             icons: {
                 next: 'glyphicon glyphicon-arrow-right',
                 previous:'glyphicon glyphicon-arrow-left',
