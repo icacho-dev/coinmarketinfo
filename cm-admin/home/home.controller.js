@@ -63,6 +63,7 @@
                           showToggle: true,
                           maintainSelected: true,
                           sortName: 'date',
+                          sortOrder: 'desc',
                           columns: [
                             {
                               field: 'state',
