@@ -5,8 +5,8 @@
         .module('app')
         .controller('RegisterCurrencyController', RegisterCurrencyController);
 
-    RegisterController.$inject = ['CurrencyService', '$location', '$rootScope', 'FlashService'];
-    function RegisterController(CurrencyService, $location, $rootScope, FlashService) {
+    RegisterCurrencyController.$inject = ['CurrencyService', '$location', '$rootScope', 'FlashService'];
+    function RegisterCurrencyController(CurrencyService, $location, $rootScope, FlashService) {
         var vm = this;
 
         vm.register = register;
