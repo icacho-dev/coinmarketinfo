@@ -89,7 +89,6 @@
                                   valign: 'middle',
                                   sortable: true
                               }
-
                           // ,
                           // {
                           //     field: 'id',
