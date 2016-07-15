@@ -12,7 +12,7 @@
         service.GetAll = GetAll;
         // service.GetById = GetById;
         // service.GetByUsername = GetByUsername;
-        // service.Create = Create;
+        service.Create = Create;
         // service.Update = Update;
         // service.Delete = Delete;
 
@@ -23,7 +23,7 @@
         }
 
         function Create(currency) {
-            return $http.post('/api/insertCurrency', currency).then(handleSuccess, handleError('Error creating currency'));
+            return $http.post(myConfig.api + 'insertCurrency', currency).then(handleSuccess, handleError('Error creating currency'));
         }
         // function GetAll() {
         //     return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
