@@ -13,6 +13,7 @@
 
         function register() {
             vm.dataLoading = true;
+            console.log;
             CurrencyService.Create(vm.currency)
                 .then(function (response) {
                     if (response.success) {

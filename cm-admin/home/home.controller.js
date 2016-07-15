@@ -62,19 +62,34 @@
                           clickToSelect: false,
                           showToggle: true,
                           maintainSelected: true,
-                          sortName: 'pk',
+                          sortName: 'date',
                           columns: [
                             {
                               field: 'state',
                               checkbox: true
                             },
                             {
-                                field: 'pk',
+                                field: 'id',
                                 title: '#',
                                 align: 'center',
-                                valign: 'bottom',
+                                valign: 'middle',
                                 sortable: true
-                            }
+                            },
+                              {
+                                  field: 'date',
+                                  title: 'Date',
+                                  align: 'center',
+                                  valign: 'middle',
+                                  sortable: true
+                              },
+                              {
+                                  field: 'price',
+                                  title: 'Price',
+                                  align: 'center',
+                                  valign: 'middle',
+                                  sortable: true
+                              }
+
                           // ,
                           // {
                           //     field: 'id',
